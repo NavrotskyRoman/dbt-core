@@ -1,0 +1,14 @@
+# dbt-core: пакет общих макросов для всех dbt-проектов платформы.
+# Подключается как зависимость через packages.yml (git).
+# Не запускается отдельно — только как пакет внутри проектов (lp_crm, payments_nt и т.д.).
+
+name: 'dbt_core'
+config-version: 2
+version: '0.1.0'
+
+# Только макросы, моделей нет.
+macro-paths: ["macros"]
+
+# Пакет не использует profile при установке в другой проект.
+# Проекты, подключающие dbt_core, должны иметь dbt_external_tables в packages.yml
+# для работы create_external_tables() и pipeline_on_run_start().
